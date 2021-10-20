@@ -143,6 +143,7 @@ module Cardano.Api.TxBody (
 
 import           Prelude
 
+import           Control.Applicative (some)
 import           Control.Monad (guard)
 import           Data.Aeson (object, withObject, withText, (.:), (.:?), (.=))
 import qualified Data.Aeson as Aeson
@@ -170,6 +171,7 @@ import qualified Data.Text as Text
 import           Data.Type.Equality (TestEquality (..), (:~:) (Refl))
 import           Data.Word (Word16, Word32, Word64)
 import           GHC.Generics
+import           Text.Parsec ((<?>))
 import qualified Text.Parsec as Parsec
 import qualified Text.Parsec.Language as Parsec
 import qualified Text.Parsec.String as Parsec
