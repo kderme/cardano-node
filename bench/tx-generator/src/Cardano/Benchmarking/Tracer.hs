@@ -1,8 +1,8 @@
 {-# LANGUAGE ConstraintKinds #-}
 {-# LANGUAGE DeriveGeneric #-}
 {-# LANGUAGE DerivingStrategies #-}
-{-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE GADTs #-}
 {-# LANGUAGE LambdaCase #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
@@ -25,40 +25,40 @@ module Cardano.Benchmarking.Tracer
   ) where
 
 
-import           Prelude (Show(..), String)
-import           Data.Aeson (ToJSON (..), (.=), encode)
+import           Data.Aeson (ToJSON (..), encode, (.=))
 import qualified Data.Aeson as A
 import qualified Data.ByteString.Lazy.Char8 as BSL (unpack)
 import qualified Data.Text as T
 import           Data.Time.Clock (DiffTime, NominalDiffTime, getCurrentTime)
+import           Prelude (Show (..), String)
 
 import           Control.Tracer (debugTracer)
 
-import qualified Codec.CBOR.Term as CBOR
 import           Cardano.Api
+import qualified Codec.CBOR.Term as CBOR
 
 import           Cardano.Prelude hiding (TypeError, show)
 
 
-import           Cardano.BM.Tracing
 import           Cardano.BM.Data.Tracer (trStructured)
-import           Network.Mux (WithMuxBearer(..))
+import           Cardano.BM.Tracing
+import           Network.Mux (WithMuxBearer (..))
 
 
-import           Cardano.Node.Configuration.Logging (LOContent(..), LoggingLayer (..))
-import           Cardano.Tracing.OrphanInstances.Byron()
-import           Cardano.Tracing.OrphanInstances.Common()
-import           Cardano.Tracing.OrphanInstances.Consensus()
-import           Cardano.Tracing.OrphanInstances.Network()
-import           Cardano.Tracing.OrphanInstances.Shelley()
+import           Cardano.Node.Configuration.Logging (LOContent (..), LoggingLayer (..))
+import           Cardano.Tracing.OrphanInstances.Byron ()
+import           Cardano.Tracing.OrphanInstances.Common ()
+import           Cardano.Tracing.OrphanInstances.Consensus ()
+import           Cardano.Tracing.OrphanInstances.Network ()
+import           Cardano.Tracing.OrphanInstances.Shelley ()
 
 
 import           Cardano.Benchmarking.OuroborosImports
-import           Ouroboros.Network.Driver (TraceSendRecv (..))
-import           Ouroboros.Network.Protocol.TxSubmission2.Type (TxSubmission2)
 import           Ouroboros.Consensus.Ledger.SupportsMempool (GenTx, GenTxId)
-import           Ouroboros.Network.NodeToNode (RemoteConnectionId, NodeToNodeVersion)
+import           Ouroboros.Network.Driver (TraceSendRecv (..))
+import           Ouroboros.Network.NodeToNode (NodeToNodeVersion, RemoteConnectionId)
 import           Ouroboros.Network.Protocol.Handshake.Type (Handshake)
+import           Ouroboros.Network.Protocol.TxSubmission2.Type (TxSubmission2)
 
 import           Cardano.Benchmarking.Types
 import qualified Data.Aeson.KeyMap as KeyMap

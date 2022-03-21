@@ -119,10 +119,10 @@ import           Cardano.Api.ProtocolParameters
 import           Cardano.Api.TxBody
 import           Cardano.Api.Value
 
-import           Data.Word (Word64)
 import qualified Cardano.Protocol.TPraos.API as TPraos
-import qualified Data.Compact.SplitMap as SplitMap
 import qualified Data.Aeson.KeyMap as KeyMap
+import qualified Data.Compact.SplitMap as SplitMap
+import           Data.Word (Word64)
 
 -- ----------------------------------------------------------------------------
 -- Queries

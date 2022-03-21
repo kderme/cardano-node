@@ -6,12 +6,13 @@ module Gen.Cardano.Api.Metadata
   , genJsonForTxMetadata
   ) where
 
-import           Cardano.Prelude
 import           Cardano.Api
+import           Cardano.Prelude
 import           Data.Aeson (ToJSON (..))
 import           Hedgehog (Gen)
 
 import qualified Data.Aeson as Aeson
+import qualified Data.Aeson.Key as Aeson
 import qualified Data.ByteString as BS
 import qualified Data.ByteString.Base16 as Base16
 import qualified Data.Map.Strict as Map
@@ -20,7 +21,6 @@ import qualified Data.Text.Encoding as Text
 import qualified Hedgehog.Gen as Gen
 import qualified Hedgehog.Internal.Gen as Gen
 import qualified Hedgehog.Range as Range
-import qualified Data.Aeson.Key as Aeson
 
 -- ----------------------------------------------------------------------------
 -- Generators

@@ -11,8 +11,8 @@ import           Prelude (String)
 import           Test.OptParse as OP
 
 import qualified Data.Aeson as J
-import qualified Data.Aeson.KeyMap as KeyMap
 import qualified Data.Aeson.Key as J
+import qualified Data.Aeson.KeyMap as KeyMap
 import qualified Data.Aeson.Types as J
 import qualified Data.ByteString.Lazy as LBS
 import qualified Data.HashMap.Lazy as HM

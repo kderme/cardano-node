@@ -44,7 +44,7 @@ import qualified System.Metrics.Gauge as Gauge
 import qualified System.Metrics.Label as Label
 import qualified System.Remote.Monitoring as EKG
 
-import "contra-tracer" Control.Tracer
+import           "contra-tracer" Control.Tracer
 import           Control.Tracer.Transformers
 
 import           Cardano.Slotting.Slot (EpochNo (..), SlotNo (..), WithOrigin (..))
@@ -104,8 +104,8 @@ import qualified Ouroboros.Consensus.Storage.LedgerDB.Types as LedgerDB
 
 import           Cardano.Tracing.Config
 import           Cardano.Tracing.Metrics
-import           Cardano.Tracing.Startup ()
 import           Cardano.Tracing.Shutdown ()
+import           Cardano.Tracing.Startup ()
 
 import           Cardano.Node.Configuration.Logging
 import           Cardano.Node.TraceConstraints

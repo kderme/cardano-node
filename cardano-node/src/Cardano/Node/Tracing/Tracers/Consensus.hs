@@ -83,22 +83,23 @@ import           Cardano.Prelude hiding (All, Show, show)
 
 import           Cardano.Protocol.TPraos.OCert (KESPeriod (..))
 
+import           Ouroboros.Network.Block hiding (blockPrevHash)
 import           Ouroboros.Network.BlockFetch.ClientState (TraceLabelPeer (..))
 import qualified Ouroboros.Network.BlockFetch.ClientState as BlockFetch
-import           Ouroboros.Network.KeepAlive (TraceKeepAliveClient (..))
-import           Ouroboros.Network.TxSubmission.Inbound hiding(txId)
-import           Ouroboros.Network.TxSubmission.Outbound
-import           Ouroboros.Network.Block hiding (blockPrevHash)
 import           Ouroboros.Network.BlockFetch.Decision
 import           Ouroboros.Network.DeltaQ (GSV (..), PeerGSV (..))
+import           Ouroboros.Network.KeepAlive (TraceKeepAliveClient (..))
+import           Ouroboros.Network.TxSubmission.Inbound hiding (txId)
+import           Ouroboros.Network.TxSubmission.Outbound
 
+import qualified Data.Aeson as Aeson
 import           Ouroboros.Consensus.Block
 import           Ouroboros.Consensus.BlockchainTime (SystemStart (..))
 import           Ouroboros.Consensus.BlockchainTime.WallClock.Util (TraceBlockchainTimeEvent (..))
 import           Ouroboros.Consensus.Cardano.Block
 import           Ouroboros.Consensus.Ledger.Inspect (LedgerEvent (..), LedgerUpdate, LedgerWarning)
-import           Ouroboros.Consensus.Ledger.SupportsMempool (ApplyTxErr, GenTxId,
-                   LedgerSupportsMempool, txForgetValidated, txId, HasTxId)
+import           Ouroboros.Consensus.Ledger.SupportsMempool (ApplyTxErr, GenTxId, HasTxId,
+                   LedgerSupportsMempool, txForgetValidated, txId)
 import           Ouroboros.Consensus.Ledger.SupportsProtocol
 import           Ouroboros.Consensus.Mempool.API (MempoolSize (..), TraceEventMempool (..))
 import           Ouroboros.Consensus.MiniProtocol.BlockFetch.Server
@@ -110,7 +111,6 @@ import           Ouroboros.Consensus.MiniProtocol.LocalTxSubmission.Server
 import           Ouroboros.Consensus.Node.Run (SerialiseNodeToNodeConstraints, estimateBlockSize)
 import           Ouroboros.Consensus.Node.Tracers
 import qualified Ouroboros.Consensus.Protocol.Ledger.HotKey as HotKey
-import qualified Data.Aeson as Aeson
 
 
 

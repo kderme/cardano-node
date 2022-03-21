@@ -1,5 +1,5 @@
-{-# LANGUAGE DeriveGeneric       #-}
-{-# LANGUAGE RecordWildCards     #-}
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE RecordWildCards #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
 module Cardano.Logging.FrequencyLimiter (

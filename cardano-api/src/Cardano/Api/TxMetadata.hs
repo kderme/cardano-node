@@ -43,23 +43,23 @@ module Cardano.Api.TxMetadata (
 import           Prelude
 
 import           Data.Bifunctor (first)
-import           Data.Maybe (fromMaybe)
-import           Data.Word
-import qualified Data.Scientific as Scientific
 import           Data.ByteString (ByteString)
 import qualified Data.ByteString as BS
+import qualified Data.ByteString.Base16 as Base16
 import qualified Data.ByteString.Char8 as BSC
 import qualified Data.ByteString.Lazy.Char8 as LBS
-import qualified Data.ByteString.Base16 as Base16
+import qualified Data.List as List
+import qualified Data.Map.Lazy as Map.Lazy
+import           Data.Map.Strict (Map)
+import qualified Data.Map.Strict as Map
+import           Data.Maybe (fromMaybe)
+import qualified Data.Scientific as Scientific
 import           Data.Text (Text)
 import qualified Data.Text as Text
 import qualified Data.Text.Encoding as Text
 import qualified Data.Text.Lazy as Text.Lazy
-import qualified Data.Map.Lazy as Map.Lazy
-import           Data.Map.Strict (Map)
-import qualified Data.Map.Strict as Map
-import qualified Data.List as List
 import qualified Data.Vector as Vector
+import           Data.Word
 
 import qualified Data.Aeson as Aeson
 import qualified Data.Aeson.Text as Aeson.Text
@@ -76,8 +76,8 @@ import           Cardano.Api.Eras
 import           Cardano.Api.Error
 import           Cardano.Api.HasTypeProxy
 import           Cardano.Api.SerialiseCBOR
-import qualified Data.Aeson.KeyMap as KeyMap
 import qualified Data.Aeson.Key as Aeson
+import qualified Data.Aeson.KeyMap as KeyMap
 
 {- HLINT ignore "Use lambda-case" -}
 

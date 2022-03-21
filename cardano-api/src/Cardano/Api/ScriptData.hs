@@ -71,16 +71,16 @@ import           Cardano.Api.Error
 import           Cardano.Api.HasTypeProxy
 import           Cardano.Api.Hash
 import           Cardano.Api.KeysShelley
-import           Cardano.Api.SerialiseJSON
 import           Cardano.Api.SerialiseCBOR
+import           Cardano.Api.SerialiseJSON
 import           Cardano.Api.SerialiseRaw
 import qualified Cardano.Binary as CBOR
 
 import           Cardano.Api.SerialiseUsing
 import           Cardano.Api.TxMetadata (pBytes, pSigned, parseAll)
-import           Codec.Serialise.Class (Serialise(..))
-import qualified Data.Aeson.KeyMap as KeyMap
+import           Codec.Serialise.Class (Serialise (..))
 import qualified Data.Aeson.Key as Aeson
+import qualified Data.Aeson.KeyMap as KeyMap
 
 -- ----------------------------------------------------------------------------
 -- Script data

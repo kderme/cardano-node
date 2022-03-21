@@ -57,9 +57,9 @@ import qualified Ouroboros.Consensus.Protocol.PBFT as PBFT
 import           Ouroboros.Consensus.Storage.ImmutableDB.Chunks.Internal (ChunkNo (..),
                    chunkNoToInt)
 import           Ouroboros.Consensus.Storage.LedgerDB.Types
+import qualified Ouroboros.Consensus.Storage.LedgerDB.Types as LedgerDB
 import qualified Ouroboros.Consensus.Storage.VolatileDB.Impl as VolDb
 import           Ouroboros.Network.BlockFetch.ClientState (TraceLabelPeer (..))
-import qualified Ouroboros.Consensus.Storage.LedgerDB.Types as LedgerDB
 
 import           Ouroboros.Consensus.Util.Condense
 import           Ouroboros.Consensus.Util.Orphans ()
@@ -71,10 +71,10 @@ import           Ouroboros.Network.Point (withOrigin)
 
 import qualified Ouroboros.Consensus.Storage.ChainDB as ChainDB
 -- TODO: 'TraceCacheEvent' should be exported by the 'Impl' module
-import qualified Ouroboros.Consensus.Storage.ImmutableDB.Impl.Types as ImmDB
-import qualified Ouroboros.Consensus.Storage.ImmutableDB.API as ImmDB
-import qualified Ouroboros.Consensus.Storage.LedgerDB.OnDisk as LedgerDB
 import qualified Data.Aeson as Aeson
+import qualified Ouroboros.Consensus.Storage.ImmutableDB.API as ImmDB
+import qualified Ouroboros.Consensus.Storage.ImmutableDB.Impl.Types as ImmDB
+import qualified Ouroboros.Consensus.Storage.LedgerDB.OnDisk as LedgerDB
 
 
 {- HLINT ignore "Use const" -}

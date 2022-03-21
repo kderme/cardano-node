@@ -8,8 +8,7 @@ module Cardano.TxSubmit.Tracing.ToObjectOrphans () where
 
 import           Cardano.BM.Data.Severity (Severity (Debug, Error, Notice, Warning))
 import           Cardano.BM.Data.Tracer (HasPrivacyAnnotation, HasSeverityAnnotation (..),
-                   HasTextFormatter, ToObject (toObject), Transformable (..),
-                   trStructured)
+                   HasTextFormatter, ToObject (toObject), Transformable (..), trStructured)
 import           Data.Aeson ((.=))
 import           Data.String (String)
 import           Data.Text (Text)
@@ -17,8 +16,8 @@ import           Ouroboros.Network.NodeToClient (ErrorPolicyTrace (..), WithAddr
 import           System.IO (IO)
 import           Text.Show (Show (..))
 
+import           Data.Monoid (mconcat)
 import qualified Network.Socket as Socket
-import Data.Monoid (mconcat)
 
 instance HasPrivacyAnnotation (WithAddr Socket.SockAddr ErrorPolicyTrace)
 instance HasSeverityAnnotation (WithAddr Socket.SockAddr ErrorPolicyTrace) where

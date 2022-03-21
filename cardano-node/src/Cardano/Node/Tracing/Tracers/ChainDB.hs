@@ -50,8 +50,8 @@ import qualified Ouroboros.Consensus.Storage.VolatileDB as VolDB
 import qualified Ouroboros.Consensus.Storage.VolatileDB.Impl as VolDb
 import           Ouroboros.Consensus.Util.Condense (condense)
 
-import qualified Ouroboros.Network.AnchoredFragment as AF
 import qualified Data.Aeson.KeyMap as KeyMap
+import qualified Ouroboros.Network.AnchoredFragment as AF
 
 {-# ANN module ("HLint: ignore Redundant bracket" :: Text) #-}
 

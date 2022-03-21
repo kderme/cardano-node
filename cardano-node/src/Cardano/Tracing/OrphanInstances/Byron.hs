@@ -16,9 +16,9 @@ import           Data.Aeson (Value (..))
 import qualified Data.Set as Set
 import qualified Data.Text as Text
 
-import           Cardano.Tracing.Render (renderTxId)
 import           Cardano.Tracing.OrphanInstances.Common
 import           Cardano.Tracing.OrphanInstances.Consensus ()
+import           Cardano.Tracing.Render (renderTxId)
 
 import           Ouroboros.Consensus.Block (Header)
 import           Ouroboros.Network.Block (blockHash, blockNo, blockSlot)

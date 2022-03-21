@@ -26,8 +26,8 @@ import           Cardano.BM.Trace (traceNamedObject)
 import           Cardano.BM.Tracing
 
 import           Ouroboros.Consensus.Block (Header)
-import           Ouroboros.Network.ConnectionId (remoteAddress)
 import           Ouroboros.Consensus.Util.Orphans ()
+import           Ouroboros.Network.ConnectionId (remoteAddress)
 
 import qualified Ouroboros.Network.AnchoredFragment as Net
 import           Ouroboros.Network.Block (unSlotNo)
