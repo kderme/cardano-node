@@ -42,7 +42,6 @@ import qualified Data.ByteString as BS
 import qualified Data.ByteString.Base16 as Base16
 import qualified Data.ByteString.Char8 as BSC
 import qualified Data.ByteString.Lazy.Char8 as LBS
-import qualified Data.Char as Char
 import qualified Data.HashMap.Strict as HashMap
 import qualified Data.List as List
 import           Data.Maybe (fromMaybe)
@@ -362,11 +361,6 @@ scriptDataToJsonNoSchema = conv
     conv :: ScriptData -> Aeson.Value
     conv (ScriptDataNumber n) = Aeson.Number (fromInteger n)
     conv (ScriptDataBytes bs)
-      | Right s <- Text.decodeUtf8' bs
-      , Text.all Char.isPrint s
-      = Aeson.String s
-
-      | otherwise
       = Aeson.String (bytesPrefix <> Text.decodeLatin1 (Base16.encode bs))
 
     conv (ScriptDataList  vs) = Aeson.Array (Vector.fromList (map conv vs))
