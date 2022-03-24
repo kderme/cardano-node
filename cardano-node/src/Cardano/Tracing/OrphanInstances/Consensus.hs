@@ -1158,7 +1158,7 @@ instance (ConvertRawHash blk, LedgerSupportsProtocol blk)
       => ToObject (TraceChainSyncClientEvent blk) where
   toObject verb ev = case ev of
     TraceDownloadedHeader h ->
-      mconcat $
+      mconcat
                [ "kind" .= String "ChainSyncClientEvent.TraceDownloadedHeader"
                , tipToObject (tipFromHeader h)
                ]
@@ -1178,22 +1178,22 @@ instance ConvertRawHash blk
       => ToObject (TraceChainSyncServerEvent blk) where
   toObject verb ev = case ev of
     TraceChainSyncServerRead tip AddBlock{} ->
-      mconcat $
+      mconcat
         [ "kind" .= String "ChainSyncServerEvent.TraceChainSyncServerRead.AddBlock"
         , tipToObject tip
         ]
     TraceChainSyncServerRead tip RollBack{} ->
-      mconcat $
+      mconcat
         [ "kind" .= String "ChainSyncServerEvent.TraceChainSyncServerRead.RollBack"
         , tipToObject tip
         ]
     TraceChainSyncServerReadBlocked tip AddBlock{} ->
-      mconcat $
+      mconcat
         [ "kind" .= String "ChainSyncServerEvent.TraceChainSyncServerReadBlocked.AddBlock"
         , tipToObject tip
         ]
     TraceChainSyncServerReadBlocked tip RollBack{} ->
-      mconcat $
+      mconcat
         [ "kind" .= String "ChainSyncServerEvent.TraceChainSyncServerReadBlocked.RollBack"
         , tipToObject tip
         ]
