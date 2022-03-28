@@ -46,7 +46,7 @@ import qualified Testnet.Cardano as TC
 import qualified Testnet.Conf as H
 import           Testnet.Utils (waitUntilEpoch)
 
-import           Properties.Cli.KesPeriodInfo
+import           Testnet.Properties.Cli.KesPeriodInfo
 
 {-
 The aim is to test a Plutus certifying and rewarding script. Certifying in the sense of validating a certificate
