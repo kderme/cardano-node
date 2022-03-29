@@ -45,6 +45,26 @@ library
                        Cardano.Tracer.Handlers.Metrics.Monitoring
                        Cardano.Tracer.Handlers.Metrics.Prometheus
                        Cardano.Tracer.Handlers.Metrics.Servers
+                       Cardano.Tracer.Handlers.Metrics.Utils
+
+                       Cardano.Tracer.Handlers.RTView.Run
+                       Cardano.Tracer.Handlers.RTView.State.Displayed
+                       Cardano.Tracer.Handlers.RTView.State.TraceObjects
+                       Cardano.Tracer.Handlers.RTView.UI.CSS.Bulma
+                       Cardano.Tracer.Handlers.RTView.UI.CSS.Own
+                       Cardano.Tracer.Handlers.RTView.UI.HTML.PageBody
+                       Cardano.Tracer.Handlers.RTView.UI.Img.Icons
+                       Cardano.Tracer.Handlers.RTView.UI.Updater
+                       Cardano.Tracer.Handlers.RTView.UI.Utils
+
+                       Cardano.Tracer.Handlers.RTView.State.DataPoint
+                       Cardano.Tracer.Handlers.RTView.UI.DataPoints
+                       Cardano.Tracer.Handlers.RTView.UI.HTML.NodePanel.Add
+                       Cardano.Tracer.Handlers.RTView.UI.HTML.NodePanel.Heading
+                       Cardano.Tracer.Handlers.RTView.UI.HTML.NodePanel.HealthTab
+                       Cardano.Tracer.Handlers.RTView.UI.HTML.NodePanel.PeersTab
+                       Cardano.Tracer.Handlers.RTView.UI.HTML.NodePanel.Tabs
+                       Cardano.Tracer.Handlers.RTView.UI.HTML.OwnInfo
 
                        Cardano.Tracer.CLI
                        Cardano.Tracer.Configuration
@@ -60,6 +80,7 @@ library
                        , blaze-html
                        , blaze-markup
                        , bytestring
+                       , cardano-git-rev
                        , cborg
                        , containers
                        , contra-tracer
@@ -76,6 +97,7 @@ library
                        , snap-core
                        , snap-server
                        , stm
+                       , string-qq
                        , text
                        , threepenny-gui
                        , time
