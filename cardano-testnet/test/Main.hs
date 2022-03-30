@@ -16,13 +16,13 @@ import           Test.Tasty (TestTree)
 -- import qualified Spec.Plutus.Script.TxInLockingPlutus
 -- import qualified Spec.Plutus.SubmitApi.TxInLockingPlutus
 import           Spec.Cli.KesPeriodInfo (hprop_kes_period_info)
--- import qualified Spec.Node.Shutdown
--- import qualified Spec.ShutdownOnSlotSynced
+import qualified Spec.Node.Shutdown
+import qualified Spec.ShutdownOnSlotSynced
 import qualified System.Environment as E
 import qualified Test.Tasty as T
 import qualified Test.Tasty.Hedgehog as H
 import qualified Test.Tasty.Ingredients as T
---import qualified Test.Util as H
+import qualified Test.Util as H
 
 tests :: IO TestTree
 tests = do
@@ -38,9 +38,11 @@ tests = do
      --  , H.ignoreOnWindows "Plutus.Direct.ScriptContextEquality"  Spec.Plutus.Direct.ScriptContextEquality.hprop_plutus_script_context_equality
      --  , H.ignoreOnWindows "Plutus.Direct.ScriptContextEqualityMint" Spec.Plutus.Direct.ScriptContextEqualityMint.hprop_plutus_script_context_mint_equality
         -- There is a blocking call on Windows that prevents graceful shutdown and we currently aren't testing the shutdown IPC flag.
-    --    H.ignoreOnWindows "Shutdown" Spec.Node.Shutdown.hprop_shutdown
-    --  , H.ignoreOnWindows "ShutdownOnSlotSynced" Spec.ShutdownOnSlotSynced.hprop_shutdownOnSlotSynced
-       H.testProperty "kes-period-info" hprop_kes_period_info
+        H.ignoreOnWindows "Shutdown" Spec.Node.Shutdown.hprop_shutdown
+      , H.ignoreOnWindows "ShutdownOnSlotSynced" Spec.ShutdownOnSlotSynced.hprop_shutdownOnSlotSynced
+      -- Ignored on Windows due to <stdout>: commitBuffer: invalid argument (invalid character)
+      -- as a result of the kes-period-info output to stdout.
+      , H.ignoreOnWindows "kes-period-info" hprop_kes_period_info
       ]
     ]
 
