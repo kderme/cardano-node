@@ -23,6 +23,12 @@ mkPageBody window =
             ]
         ]
     , UI.mkElement "section" #. "section" #+
+        [ UI.div ## "main-table" #. "table-container rt-view-main-table-container" #+
+            [ UI.table #. "table rt-view-main-table" #+ []
+            ]
+        ]
+    {-
+    , UI.mkElement "section" #. "section" #+
         [ UI.div #. "table-container rt-view-peers-table-container" #+
             [ UI.table #. "table rt-view-peers-table" #+
                 [ UI.mkElement "thead" #+
@@ -104,6 +110,7 @@ mkPageBody window =
                 ]
             ]
         ]
+        -}
         --UI.div ## "no-nodes" #. "container is-max-widescreen has-text-centered" #+
         --    [ image "rt-view-no-nodes-icon" noNodesSVG
         --    , UI.p #. "rt-view-no-nodes-message" #+
