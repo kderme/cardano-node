@@ -20,7 +20,7 @@ import           Cardano.Tracer.Handlers.Metrics.Utils
 import           Cardano.Tracer.Handlers.RTView.State.Displayed
 import           Cardano.Tracer.Handlers.RTView.State.TraceObjects
 import           Cardano.Tracer.Handlers.RTView.UI.DataPoints
-import           Cardano.Tracer.Handlers.RTView.UI.HTML.NodePanel.Add
+import           Cardano.Tracer.Handlers.RTView.UI.HTML.Node.Column
 import           Cardano.Tracer.Handlers.RTView.UI.Utils
 import           Cardano.Tracer.Types
 
@@ -43,7 +43,7 @@ updateUI window connectedNodes displayedNodes displayedElements
     then do
       -- Ok, web-page was reload (i.e. it's the first update after DOM-rendering),
       -- so displayed state should be restored immediately.
-      addPanelsForConnected window connected
+      addColumnsForConnected window connected
       checkNoNodesState window connected
       askNodeInfoIfNeeded dpRequestors connected displayedElements
       liftIO $ do
@@ -55,8 +55,8 @@ updateUI window connectedNodes displayedNodes displayedElements
       when (connected /= displayed) $ do
         let disconnected   = displayed \\ connected -- In 'displayed' but not in 'connected'.
             newlyConnected = connected \\ displayed -- In 'connected' but not in 'displayed'.
-        deletePanelsForDisconnected window disconnected
-        addPanelsForConnected window newlyConnected
+        deleteColumnsForDisconnected window connected disconnected
+        addColumnsForConnected window newlyConnected
         checkNoNodesState window connected
         askNodeInfoIfNeeded dpRequestors newlyConnected displayedElements
         liftIO $ do
@@ -65,11 +65,22 @@ updateUI window connectedNodes displayedNodes displayedElements
   -- Check if we have to update elements on the page using received 'TraceObject's.
   checkAcceptedTraceObjects window displayedElements savedTO
 
-addPanelsForConnected, deletePanelsForDisconnected
-  :: UI.Window -> Set NodeId -> UI ()
-addPanelsForConnected window = mapM_ (addNodePanel window)
-deletePanelsForDisconnected window disconnected =
-  forM_ disconnected $ \(NodeId anId) -> findAndDo window anId UI.delete
+addColumnsForConnected
+  :: UI.Window
+  -> Set NodeId
+  -> UI ()
+addColumnsForConnected window connected = do
+  showDescriptionColumnIfNeeded window connected
+  forM_ connected $ addNodeColumn window
+
+deleteColumnsForDisconnected
+  :: UI.Window
+  -> Set NodeId
+  -> Set NodeId
+  -> UI ()
+deleteColumnsForDisconnected window connected disconnected = do
+  forM_ disconnected $ deleteNodeColumn window
+  hideDescriptionColumnIfNeeded window connected
 
 checkNoNodesState :: UI.Window -> Set NodeId -> UI ()
 checkNoNodesState window connected =

@@ -2,7 +2,9 @@ module Cardano.Tracer.Handlers.RTView.UI.Utils
   ( (##)
   , dataTooltip
   , findAndDo
+  , findByClassAndDo
   , findAndSet
+  , findByClassAndSet
   , findAndHide
   , findAndShow
   , image
@@ -33,6 +35,14 @@ findAndDo
 findAndDo window elId =
   whenJustM (UI.getElementById window (unpack elId))
 
+findByClassAndDo
+  :: UI.Window
+  -> Text
+  -> (Element -> UI ())
+  -> UI ()
+findByClassAndDo window className doIt =
+  UI.getElementsByClassName window (unpack className) >>= mapM_ doIt
+
 findAndSet
   :: (UI Element -> UI Element)
   -> UI.Window
@@ -40,6 +50,15 @@ findAndSet
   -> UI ()
 findAndSet doIt window elId =
   findAndDo window elId $ \el -> void $ element el # doIt
+
+findByClassAndSet
+  :: (UI Element -> UI Element)
+  -> UI.Window
+  -> Text
+  -> UI ()
+findByClassAndSet doIt window className =
+  UI.getElementsByClassName window (unpack className)
+  >>= mapM_ (\el -> void $ element el # doIt)
 
 findAndShow, findAndHide
   :: UI.Window -> Text -> UI ()

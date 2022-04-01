@@ -2,7 +2,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module Cardano.Tracer.Handlers.RTView.UI.HTML.NodePanel.PeersTab
+module Cardano.Tracer.Handlers.RTView.UI.HTML.Node.Peers
   ( mkPeersTab
   ) where
 
