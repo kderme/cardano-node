@@ -281,7 +281,7 @@
                 (pkgs.supervisord-workbench-for-profile
                   {
                     inherit supervisord-workbench;
-                    profileName = "k6-600slots-1000kU-1000kD-64kbs-10tps-fixed-loaded-alzo";
+                    profileName = "k6-600slots-500kU-500kD-80kbs-11tps-fixed-loaded-alzo";
                   }
                 ).profile-run { };
               workbench-smoke-analysis = workbench-smoke-test.analysis;
