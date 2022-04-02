@@ -43,18 +43,27 @@
 
     node-measured = {
       url = "github:input-output-hk/cardano-node";
+      inputs.membench.url = "github:input-output-hk/empty-flake";
+      inputs.cardano-node-workbench.url = "github:input-output-hk/empty-flake";
     };
     node-snapshot = {
-      url = "github:input-output-hk/cardano-node/7f00e3ea5a61609e19eeeee4af35241571efdf5c";
+      url = "github:input-output-hk/cardano-node/node-snapshot";
+      inputs.membench.url = "github:input-output-hk/empty-flake";
+      inputs.cardano-node-workbench.url = "github:input-output-hk/empty-flake";
     };
     node-process = {
       url = "github:input-output-hk/cardano-node";
       flake = false;
+      inputs.membench.url = "github:input-output-hk/empty-flake";
+      inputs.cardano-node-workbench.url = "github:input-output-hk/empty-flake";
     };
     ## This pin is to prevent workbench-produced geneses being regenerated each time the node is bumped.
+    node-workbench = {
+      url = "github:input-output-hk/cardano-node/78675fbf8986c87c0d2356b727a0ec2060f1adba";
+      inputs.membench.url = "github:input-output-hk/empty-flake";
+    };
     cardano-node-workbench = {
-      url = "github:input-output-hk/cardano-node/ed9932c52aaa535b71f72a5b4cc0cecb3344a5a3";
-      # This is to avoid circular import (TODO: remove this workbench pin entirely using materialization):
+      url = "github:input-output-hk/empty-flake";
       inputs.membench.url = "github:input-output-hk/empty-flake";
     };
 
@@ -73,7 +82,7 @@
     , node-snapshot
     , node-measured
     , node-process
-    , cardano-node-workbench
+    , node-workbench
     , ...
     }@input:
     let
@@ -156,7 +165,7 @@
             inherit (project.pkgs) system;
           }).plutus-apps.haskell.packages.plutus-example.components.exes) plutus-example;
           pinned-workbench =
-            cardano-node-workbench.workbench.${project.pkgs.system};
+            node-workbench.workbench.${project.pkgs.system};
           hsPkgsWithPassthru = lib.mapAttrsRecursiveCond (v: !(lib.isDerivation v))
             (path: value:
               if (lib.isAttrs value) then
